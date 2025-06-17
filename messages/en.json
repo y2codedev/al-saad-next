@@ -244,5 +244,10 @@
   "actions": "Actions",
   "country": "Country",
   "city": "City",
-  "address": "Address"
+  "address": "Address",
+  "change_mobile": "Change Mobile",
+  "save": "Save",
+  "verify": "Verify",
+  "confrim_password": "Confirm Password",
+  "old_password": "Old Password"
 }

@@ -57,7 +57,7 @@ const AddEditAddress = () => {
     lat: 23.8859,
     lng: 45.0792,
   });
-  const { countries, fetchCountries } = useCountryStore();
+  const { countries } = useCountryStore();
   const { selectedCountry, setSelectedCountry } = useSettingsStore();
   const router = useRouter();
   const values = {
@@ -326,7 +326,7 @@ const AddEditAddress = () => {
             </StyledHeading>
             <BreadcrumbsComponent
               pathSegments={[
-                { link: "/", text: "Home" },
+                { link: "/", text:t("home") },
                 { text: id ? t("update_address") : t("add_address"), link: "" },
               ]}
             />

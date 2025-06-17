@@ -75,8 +75,8 @@ const ChangePassword = () => {
             <StyledHeading>{t("change_password")}</StyledHeading>
             <BreadcrumbsComponent
               pathSegments={[
-                { link: "", text: "Home" },
-                { text: "Change Password", link: "change-password" },
+                { link: "", text:t("home") },
+                { text: t("change_password"), link: "change-password" },
               ]}
             />
           </BreadCumHeader>
@@ -105,7 +105,7 @@ const ChangePassword = () => {
             }}
           >
             <DashBox>
-              <DashTitle sx={{ px: 2, pt: 1 }}>Change Password</DashTitle>
+              <DashTitle sx={{ px: 2, pt: 1 }}>{t("change_password")}</DashTitle>
               <hr className=" text-gray-300 my-3" />
               <Formik
                 initialValues={{
@@ -133,12 +133,12 @@ const ChangePassword = () => {
                         variant="body2"
                         sx={{ fontWeight: 500, color: COLORS.grey }}
                       >
-                        Old Password
+                        {t("old_password")}
                       </Typography>
                       <TextField
                         sx={{ mb: 1.5, mt: "5px !important" }}
                         fullWidth
-                        placeholder="Old Password"
+                        placeholder={t("old_password")}
                         name="old_password"
                         value={values.old_password}
                         onChange={handleChange}
@@ -152,12 +152,12 @@ const ChangePassword = () => {
                         variant="body2"
                         sx={{ fontWeight: 500, color: COLORS.grey }}
                       >
-                        Password
+                        {t("password")}
                       </Typography>
                       <TextField
                         sx={{ mb: 1.5, mt: "5px !important" }}
                         fullWidth
-                        placeholder="Password"
+                        placeholder={t("password")}
                         name="password"
                         value={values.password}
                         onChange={handleChange}
@@ -169,12 +169,12 @@ const ChangePassword = () => {
                         variant="body2"
                         sx={{ fontWeight: 500, color: COLORS.grey }}
                       >
-                        Confirm Password
+                         {t("confrim_password")}
                       </Typography>
                       <TextField
                         sx={{ mb: 1.5, mt: "5px !important" }}
                         fullWidth
-                        placeholder="Confirm Password"
+                        placeholder={t("confrim_password")}
                         name="confirm_password"
                         value={values.confirm_password}
                         onChange={handleChange}
@@ -200,7 +200,7 @@ const ChangePassword = () => {
                           display: "flex",
                         }}
                       >
-                        Save
+                        {t("save")}
                       </Button>
                     </Box>
                   );

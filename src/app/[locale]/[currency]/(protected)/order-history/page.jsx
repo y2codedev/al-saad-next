@@ -26,7 +26,6 @@ import {
 import BreadcrumbsComponent from "@/components/BreadcrumbsComponent";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { getOrderStatusColor } from "@/utils/tagsColor";
 
 const styles = {

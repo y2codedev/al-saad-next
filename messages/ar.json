@@ -244,5 +244,10 @@
   "actions": "الإجراءات",
   "country": "البلد",
   "city": "المدينة",
-  "address": "العنوان"
+  "address": "العنوان",
+  "change_mobile": "تغيير رقم الجوال",
+  "save": "حفظ",
+  "verify": "تأكيد",
+  "confrim_password": "تأكيد كلمة المرور",
+  "old_password": "كلمة المرور القديمة"
 }

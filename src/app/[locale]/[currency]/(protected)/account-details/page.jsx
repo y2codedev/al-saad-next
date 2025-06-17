@@ -92,7 +92,7 @@ const AccountDetails = () => {
             <StyledHeading>{t("account_details")}</StyledHeading>
             <BreadcrumbsComponent
               pathSegments={[
-                { link: "/", text: "Home" },
+                { link: "/", text: t("home") },
                 { text: t("account_details"), link: "" },
               ]}
             />
@@ -147,7 +147,7 @@ const AccountDetails = () => {
                 isSubmitting,
               }) => (
                 <StyledBox>
-                  <DashTitle sx={{ px: 2, pt: 1 }}>Account Details</DashTitle>
+                  <DashTitle sx={{ px: 2, pt: 1 }}>{t("account_details")}</DashTitle>
                   <hr className=" text-gray-300 mt-1" />
                   <Grid container spacing={2} sx={{ px: 2, pt: 1 }}>
                     <Grid
@@ -292,8 +292,8 @@ const AccountDetails = () => {
                                     }}
                                   >
                                     {userInfo.is_mobile_verified
-                                      ? "Change Mobile"
-                                      : "Verify"}
+                                      ? t("change_mobile")
+                                      : t("verify")}
                                   </Button>
                                 </InputAdornment>
                               ),
@@ -320,7 +320,7 @@ const AccountDetails = () => {
                       disabled={isSubmitting}
                       onClick={handleSubmit}
                     >
-                      {isSubmitting ? "Saving..." : "Save"}
+                      {isSubmitting ? t("saving") :t("save")}
                     </SaveButton>
                   </div>
                 </StyledBox>
