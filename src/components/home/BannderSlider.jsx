@@ -1,13 +1,11 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { Link } from "@/i18n/navigation";
 import BannerSliderShimmer from "../skeleton/BannerShimmer";
 import Image from "next/image";
 import 'react-multi-carousel/lib/styles.css';
 const BannerSlider = ({ BannderSliderData, isLoading }) => {
-  const theme = useTheme();
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   if (isLoading) {
     return <BannerSliderShimmer />;
@@ -20,7 +18,6 @@ const BannerSlider = ({ BannderSliderData, isLoading }) => {
           additionalTransfrom={0}
           autoPlaySpeed={3000}
           renderButtonGroupOutside
-          // customDot={<CustomDot />}
           arrows={false}
           draggable
           infinite
@@ -62,19 +59,6 @@ const BannerSlider = ({ BannderSliderData, isLoading }) => {
                     quality={80}
                   />
                 </div>
-                {/* <Box
-                  component={"img"}
-                  draggable="false"
-                  src={item?.image}
-                  loading="lazy"
-                  alt={`BannerSlide-${item?.banner_name}`}
-                  sx={{
-                    width: "100%",
-                    height: matchesSM ? "200px" : "600px",
-                    objectFit: "cover",
-                    cursor: "pointer",
-                  }}
-                /> */}
               </Link>
             ))}
         </Carousel>

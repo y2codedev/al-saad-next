@@ -75,7 +75,7 @@ const ChangePassword = () => {
             <StyledHeading>{t("change_password")}</StyledHeading>
             <BreadcrumbsComponent
               pathSegments={[
-                { link: "", text:t("home") },
+                { link: "", text: t("home") },
                 { text: t("change_password"), link: "change-password" },
               ]}
             />
@@ -169,7 +169,7 @@ const ChangePassword = () => {
                         variant="body2"
                         sx={{ fontWeight: 500, color: COLORS.grey }}
                       >
-                         {t("confrim_password")}
+                        {t("confrim_password")}
                       </Typography>
                       <TextField
                         sx={{ mb: 1.5, mt: "5px !important" }}
