@@ -1,7 +1,6 @@
 "use client";
 
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import {
   FacebookAuthProvider,
   getAuth,
@@ -18,9 +17,7 @@ const firebaseConfig = {
   measurementId: "G-YXNL9G560K",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
