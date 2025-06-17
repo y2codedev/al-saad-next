@@ -238,7 +238,11 @@
   "download_app_description": "لتجربة تسوق رائعة",
   "try_now": "جرّبه الآن",
   "image": "الصورة",
-  "read_review":"اقرأ التقييم",
+  "read_review": "اقرأ التقييم",
   "all_customer_reviews": "جميع تقييمات العملاء",
-  "product_description": "وصف المنتج"
+  "product_description": "وصف المنتج",
+  "actions": "الإجراءات",
+  "country": "البلد",
+  "city": "المدينة",
+  "address": "العنوان"
 }

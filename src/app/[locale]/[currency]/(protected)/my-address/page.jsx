@@ -40,7 +40,6 @@ const MyAddress = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const router = useRouter();
   const t = useTranslations();
-  const { id } = useParams();
 
   const handleOpenDelete = (id) => {
     setDeleteId(id);
@@ -149,17 +148,14 @@ const MyAddress = () => {
               <hr className=" text-gray-300 mt-0" />
 
               {getAddress?.length > 0 ? (
-                <TableContainer
-                  sx={{ boxShadow: "0 0 10px rgb(0 0 0 / 20%)" }}
-                  component={Paper}
-                >
+                <TableContainer>
                   <Table sx={{ minWidth: 650 }} aria-label="address table">
                     <TableHead>
                       <TableRow>
-                        <TableCell className="table-head">Country</TableCell>
-                        <TableCell className="table-head">City</TableCell>
-                        <TableCell className="table-head">Address</TableCell>
-                        <TableCell className="table-head">Actions</TableCell>
+                        <TableCell className="table-head">{t("country")}</TableCell>
+                        <TableCell className="table-head">{t("city")}</TableCell>
+                        <TableCell className="table-head">{t("address")}</TableCell>
+                        <TableCell className="table-head">{t("actions")}</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
