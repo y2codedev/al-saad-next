@@ -227,7 +227,7 @@ const OderHistory = () => {
                                       },
                                     }}
                                   >
-                                    View
+                                    {t("view")}
                                   </Button>
                                 </TableRow>
                                 <Divider
@@ -247,7 +247,7 @@ const OderHistory = () => {
                                       ...styles.tableRowNoBorder,
                                     }}
                                   >
-                                    Order Status
+                                      {t("order_status")}
                                   </Typography>
                                   <Typography
                                     sx={{
@@ -282,7 +282,7 @@ const OderHistory = () => {
                                       ...styles.tableRowNoBorder,
                                     }}
                                   >
-                                    Items
+                                      {t("items")}
                                   </Typography>
                                   <Typography
                                     sx={{
@@ -290,7 +290,7 @@ const OderHistory = () => {
                                       ...styles.tableCellAlignEnd,
                                     }}
                                   >
-                                    {item?.item_count} Items
+                                    {item?.item_count}   {t("items")}
                                   </Typography>
                                 </TableRow>
                                 <TableRow
@@ -307,7 +307,7 @@ const OderHistory = () => {
                                       ...styles.tableRowNoBorder,
                                     }}
                                   >
-                                    Price
+                                      {t("price")}
                                   </Typography>
                                   <Typography
                                     sx={{
@@ -334,7 +334,7 @@ const OderHistory = () => {
                             mt: 2,
                           }}
                         >
-                          No orders found
+                            {t("no_order_found")}
                         </Typography>
                       </Grid>
                     )}

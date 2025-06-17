@@ -249,5 +249,9 @@
   "save": "حفظ",
   "verify": "تأكيد",
   "confrim_password": "تأكيد كلمة المرور",
-  "old_password": "كلمة المرور القديمة"
+  "old_password": "كلمة المرور القديمة",
+  "no_order_found":"لا توجد طلبات",
+  "view":"عرض",
+  "items":"المنتجات",
+  "order_status":"حالة الطلب"
 }

@@ -249,5 +249,9 @@
   "save": "Save",
   "verify": "Verify",
   "confrim_password": "Confirm Password",
-  "old_password": "Old Password"
+  "old_password": "Old Password",
+  "no_order_found": "No order found",
+  "items": "Items",
+  "order_status": "Order Status"
+
 }
