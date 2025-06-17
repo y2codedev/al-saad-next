@@ -1,0 +1,651 @@
+@import "tailwindcss";
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0px !important;
+  padding: 0px !important;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  background: #fff none repeat scroll 0 0;
+}
+
+.custom-select {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+.active {
+  color: #bb1f2a !important;
+}
+
+.inactive {
+  color: #292b2c !important;
+}
+
+.blog-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.1);
+}
+
+.react-multi-carousel-dot {
+  border: 2px solid #fff !important;
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 10px !important;
+  margin-bottom: 8px;
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: #bb1f2a !important;
+  height: 8px;
+  width: 8px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  border: none !important;
+  padding: 0px !important;
+  margin-bottom: 15px;
+}
+
+.react-multi-carousel-dot button {
+  background-color: #fff;
+  height: 8px;
+  width: 8px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  border: none !important;
+  padding: 0px !important;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .react-multi-carousel-dot {
+    border: 2px solid #fff !important;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 10px !important;
+    margin-bottom: 8px;
+  }
+}
+
+.react-multi-carousel-dot-list {
+  bottom: 8px !important;
+  margin-bottom: 8px;
+}
+
+.react-multi-carousel-dot--active {
+  border: 2px solid #bb1f2a !important;
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 10px !important;
+}
+
+.react-multiple-carousel__arrow {
+  background: #bb1f2a !important;
+  border-radius: 5px !important;
+  min-width: 35px !important;
+  min-height: 35px !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(1% + 2px) !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(1% + 2px) !important;
+}
+
+@media screen and (min-width: 1301px) {
+
+  .react-multiple-carousel__arrow--right,
+  .react-multiple-carousel__arrow--left {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+
+  .react-multiple-carousel__arrow--right,
+  .react-multiple-carousel__arrow--left,
+  .MuiBox-root.css-1fhvf53,
+  .MuiBox-root.css-1s3qmy6 {
+    display: none !important;
+  }
+}
+
+.search_icon {
+  cursor: pointer !important;
+}
+
+.search_icon:hover {
+  color: #bb1f2a !important;
+}
+
+.cart_icon:hover {
+  color: #bb1f2a !important;
+}
+
+.form-control:focus {
+  border-color: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.css-1sj2jcg-MuiTabs-indicator {
+  color: #bb1f2a !important;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+}
+
+.MuiOutlinedInput-root {
+  height: 52px !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #000 !important;
+}
+
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #000 !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #000 !important;
+  border-width: 1px !important;
+}
+
+.breadcrumbs-hover:hover {
+  color: #bb1f2a !important;
+}
+
+.MuiModal-root:focus {
+  outline: none !important;
+}
+
+.MuiModal-root *:focus {
+  outline: none !important;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding-left: 0.5rem !important;
+}
+
+.css-p6giep-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.css-e0j1y-MuiFormLabel-root-MuiInputLabel-root {
+  margin-top: 5px !important;
+}
+
+.link-none {
+  text-decoration: none !important;
+  color: #333 !important;
+}
+
+.modal-video {
+  max-width: 800px !important;
+  height: 400px !important;
+  margin: auto;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-video-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-video-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+.modal-video-movie-wrap iframe {
+  width: 100%;
+  border: 0;
+  height: 400px;
+}
+
+.css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.link-hover {
+  color: #333 !important;
+}
+
+.link-hover:hover {
+  color: #bb1f2a !important;
+}
+
+.minHeight {
+  min-height: 100vh;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.loader span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #bb1f2a;
+  border-radius: 50%;
+  animation: orbit 1.2s linear infinite;
+}
+
+.loader span:nth-child(1) {
+  top: 0;
+  left: 50%;
+  animation-delay: 0s;
+}
+
+.loader span:nth-child(2) {
+  top: 25%;
+  left: 75%;
+  animation-delay: 0.2s;
+}
+
+.loader span:nth-child(3) {
+  top: 50%;
+  left: 100%;
+  animation-delay: 0.4s;
+}
+
+.loader span:nth-child(4) {
+  top: 75%;
+  left: 75%;
+  animation-delay: 0.6s;
+}
+
+.loader span:nth-child(5) {
+  top: 100%;
+  left: 50%;
+  animation-delay: 0.8s;
+}
+
+.loader span:nth-child(6) {
+  top: 75%;
+  left: 25%;
+  animation-delay: 1s;
+}
+
+.loader span:nth-child(7) {
+  top: 50%;
+  left: 0%;
+  animation-delay: 1.2s;
+}
+
+.loader span:nth-child(8) {
+  top: 25%;
+  left: 25%;
+  animation-delay: 1.4s;
+}
+
+@keyframes orbit {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lazy-load-image-wrapper {
+  display: contents !important;
+}
+
+.reating-num {
+  color: #687188 !important;
+  margin-top: 1px !important;
+}
+
+.css-1gh2kqa-MuiButtonBase-root-MuiIconButton-root .css-1wdc28j-MuiSvgIcon-root {
+  fill: #687188 !important;
+}
+
+.css-1gh2kqa-MuiButtonBase-root-MuiIconButton-root .css-1wdc28j-MuiSvgIcon-root:hover {
+  fill: #fff !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: #80bdff !important;
+}
+
+.MuiRating-iconEmpty {
+  color: #687188 !important;
+}
+
+.MuiRating-iconFilled {
+  color: #bb1f2a !important;
+}
+
+.css-l6euy-MuiFormHelperText-root.Mui-error {
+  margin-left: 0px !important;
+}
+
+.MuiFormHelperText-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.MuiFormHelperText-contained {
+  align-self: flex-start;
+}
+
+.css-5c1adp-MuiContainer-root {
+  overflow: hidden !important;
+}
+
+.css-1ifqfww-MuiGrid-root {
+  overflow: hidden !important;
+}
+
+.zoom-icon {
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.zoom-button:hover .zoom-icon {
+  color: #bb1f2a !important;
+}
+
+.magnify-image {
+  max-width: 100% !important;
+  object-fit: cover;
+}
+
+.image-magnifier-container {
+  width: 100% !important;
+}
+
+.table-head {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.table-data {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+.image-with-slider {
+  position: relative;
+  transition: transform 1s ease-in-out !important;
+  overflow: hidden;
+}
+
+.image-with-slider img {
+  transition: transform 1s ease-in-out !important;
+}
+
+.image-with-slider:hover img {
+  transform: translateX(20px) !important;
+}
+
+.text-dart {
+  color: #343a40 !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .myorder-tab .product-imgs {
+    min-height: 100px;
+  }
+}
+
+.price-font-bold h3 {
+  font-weight: 600 !important;
+}
+
+h3.my-2.text-\[\#292b2c\].price-font-bold.text-xl.font-roboto {
+  font-weight: 600;
+}
+
+.carousel-item-padding-10-px {
+  margin-right: 10px !important;
+}
+
+.scroll-on-focus {
+  overflow-x: hidden;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.scroll-on-focus::-webkit-scrollbar {
+  display: none;
+}
+
+/* Show scrollbars on focus-visible OR hover */
+.scroll-on-focus.focus-visible,
+.scroll-on-focus:hover {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.scroll-on-focus.focus-visible::-webkit-scrollbar,
+.scroll-on-focus:hover::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.scroll-on-focus.focus-visible::-webkit-scrollbar-thumb,
+.scroll-on-focus:hover::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  /* Tailwind gray-400 */
+  border-radius: 3px;
+}
+
+.scroll-on-focus.focus-visible::-webkit-scrollbar-track,
+.scroll-on-focus:hover::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+  /* Tailwind gray-100 */
+}
+
+a {
+  color: #292b2c !important;
+  /* Your desired link color */
+  text-decoration: none;
+  /* Remove underline */
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #a10f1f !important;
+  /* Your custom hover color */
+  text-decoration: underline;
+  /* Optional: add underline on hover */
+}
+
+@keyframes bounce-once {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-8px);
+  }
+
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+.bounce-once {
+  animation: bounce-once 1s ease;
+}
+
+
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  color: black;
+  font-size: 20px;
+  z-index: 2;
+  cursor: pointer;
+  height: 50px;
+  width: 30px;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: #be1d1d;
+  /* or your COLORS.primary */
+}
+
+.nextArrow {
+  right: -3%;
+}
+
+.prevArrow {
+  left: -3%;
+}
+
+.custom-dots ul {
+  display: flex;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-dot {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute !important;
+  bottom: 35px;
+}
+
+.custom-dot::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #eee;
+  border-radius: 50%;
+  display: block;
+}
+
+/* 🔴 Change active dot's inner dot AND outer border */
+.slick-dots li.slick-active .custom-dot {
+  border-color: #bb1f2a;
+}
+
+.slick-dots li.slick-active .custom-dot::before {
+  background: #bb1f2a;
+}
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
