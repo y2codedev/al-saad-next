@@ -12,9 +12,11 @@ import ReviewPredoctDetails from "@/components/product-details-page/ReviewPredoc
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useCartStore from "@/store/useCartStore";
 import { useTranslations } from "next-intl";
+import { useSettingsStore } from "@/store/useSettingsStore";
 
 const HeroSections = () => {
   const params = useParams();
+  const { selectedCountry } = useSettingsStore();
   const t = useTranslations();
   const searchParams = useSearchParams();
   const productId = searchParams.get("product_id");
@@ -77,15 +79,15 @@ const HeroSections = () => {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-2xl md:text-4xl text-white font-bold">
+          <div className="absolute inset-0 -mt-20 flex flex-col items-center justify-center text-center px-4">
+            <h2 className="text-2xl - md:text-4xl text-white font-bold">
               {selectedProductInfo?.title}
             </h2>
-            {selectedProductInfo?.description && (
-              <p className="text-sm text-white mt-0 mb-2 max-w-2xl line-clamp-2">
+            {/* {selectedProductInfo?.description && (
+              <p className="text-sm hidden md:block text-white mt-0 mb-2 max-w-2xl line-clamp-2 ">
                 {parse(selectedProductInfo?.description)}
               </p>
-            )}
+            )} */}
           </div>
         </div>
 
@@ -191,8 +193,8 @@ const HeroSections = () => {
                 : "bg-gray-200"
                 }`}
             >
-              <span>{selectedProductInfo && selectedProductInfo?.list_price}</span>
-              {inCart ? t("go_to_cart") : t("add_to_cart")}
+              <span>{selectedProductInfo && selectedProductInfo?.list_price}  {selectedCountry?.currency_code} </span>
+              {inCart ? t("go_to_cart") : t("add_to_cart")} 
             </button>
             {/* <Button
               variant="custom"

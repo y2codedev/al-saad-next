@@ -6,9 +6,9 @@ export default function Payment() {
             key: "rzp_test_1DP5mmOlF5G5ag",
             amount: 5000000,
             currency: "INR",
-            name: "Ram",
+            name: "Al Saad Home",
             description: "Test Transaction",
-            image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
+            image: "https://static.vecteezy.com/system/resources/previews/025/869/629/non_2x/round-profile-image-of-man-avatar-for-social-networks-fashion-beauty-blue-and-black-bright-illustration-in-trendy-style-vector.jpg",
             handler: function (response) {
                 alert("Payment successful!");
                 console.log("Payment ID:", response.razorpay_payment_id);
@@ -29,9 +29,7 @@ export default function Payment() {
 
     return (
         <>
-            {/* Razorpay script */}
             <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
-
             <div className="p-4">
                 <h1 className="text-xl font-bold mb-4">Razorpay</h1>
                 <button onClick={openRazorpay} className="bg-blue-600 text-white px-4 cursor-pointer py-2 rounded">

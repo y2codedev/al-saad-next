@@ -649,3 +649,13 @@ a:hover {
 *::-webkit-scrollbar {
   display: none;
 }
+
+
+@supports (-webkit-touch-callout: none) {
+  .modal-container {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  .modal-header {
+    position: -webkit-sticky;
+  }
+}

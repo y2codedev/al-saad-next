@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Fragment } from "react";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import OptimizedImage from "./OptimizedImage";
@@ -12,41 +13,63 @@ import Register from "@/auth/Register/Register";
 import ForgotPasswordModal from "@/auth/Login/ForgotPasswordModal";
 import OtpDialog from "@/auth/Login/OtpDialog";
 import { useTranslations } from "next-intl";
-
+import { Dialog, Transition } from "@headlessui/react";
 // const TOTAL_REVIEWS = 10318;
 const RATING = 5;
 const MAX_STARS = 5;
 const TOP_RATING_COUNT = 5;
 
 const Modal = ({ isOpen, onClose, title, children }) => {
-    if (!isOpen) return null;
-
     return (
-        <div
-            aria-modal="true"
-            role="dialog"
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 bg-opacity-30"
-            onClick={onClose}
-        >
-            <div
-                className="bg-gray-900 max-w-4xl w-full sm:max-h-[75vh] h-full overflow-auto sm:rounded-lg rounded-none p-0 relative"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <div className="sticky top-0 z-10 bg-gray-900 px-6 pt-6 pb-4 border-b border-gray-700 flex justify-between items-start">
-                    <h2 className="sm:text-3xl text-xl font-semibold text-white">{title}</h2>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-white text-2xl font-bold ml-4"
-                        aria-label="Close modal"
-                    >
-                        &times;
-                    </button>
+        <Transition.Root show={isOpen} as={Fragment} className="w-full h-full">
+            <Dialog as="div" className="relative z-[999999] w-full h-full" onClose={onClose}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0  bg-opacity-30 transition-opacity" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 z-[999999] overflow-y-auto w-full h-full">
+                    <div className="flex min-h-full items-center justify-center p-0 text-center sm:p-0">
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                            enterTo="opacity-100 translate-y-0 sm:scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                           <Dialog.Panel className="relative transform overflow-hidden bg-gray-900 text-left transition-all w-full h-full sm:my-8 sm:w-full sm:max-w-4xl sm:rounded-lg rounded-none">
+
+                                <div className="sticky top-0 z-[9999999] bg-gray-900 px-6 pt-6 pb-4 border-b border-gray-700 flex justify-between items-start">
+                                    <Dialog.Title className="sm:text-xl text-[14px] font-semibold text-white">
+                                        {title}
+                                    </Dialog.Title>
+                                    <button
+                                        type="button"
+                                        className="text-gray-400 hover:text-white text-2xl font-bold ml-4"
+                                        onClick={onClose}
+                                    >
+                                        &times;
+                                    </button>
+                                </div>
+
+                                <div className="p-6 pt-0 max-h-[75vh] overflow-y-auto text-white">
+                                    {children}
+                                </div>
+                            </Dialog.Panel>
+                        </Transition.Child>
+                    </div>
                 </div>
-                <div className="p-6 pt-0">
-                    {children}
-                </div>
-            </div>
-        </div>
+            </Dialog>
+        </Transition.Root>
     );
 };
 
@@ -56,7 +79,7 @@ const ReviewPredoctDetails = ({ productId, variantId }) => {
     const [showLogin, setShowLogin] = useState(false);
     const [userData, setUserData] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
-    const { handleLike } = useHandleLike({ ratingData, setRatingData, openLoginPopup: () => { setShowLogin(true), setModalOpen(false) }, });
+    const {handleLike } = useHandleLike({ ratingData, setRatingData, openLoginPopup: () => { setShowLogin(true), setModalOpen(false) }, });
     const [topRatings, setTopRatings] = useState([]);
     const [openMobileOtp, setOpenMobileOtp] = useState(false);
     const [openForgotPassword, setOpenForgotPassword] = useState(false);
@@ -161,7 +184,7 @@ const ReviewPredoctDetails = ({ productId, variantId }) => {
     );
 
     return (
-        <section className="relative w-full min-h-screen overflow-auto  text-white px-4 py-8">
+        <section className="relative w-full min-h-screen overflow-auto  text-white px-4 py-28 ">
             <div className="absolute inset-0 -z-10">
                 <OptimizedImage
                     src="https://cdn.pixabay.com/photo/2024/06/26/11/31/ai-generated-8854776_1280.jpg"
@@ -184,13 +207,6 @@ const ReviewPredoctDetails = ({ productId, variantId }) => {
                             />
                         ))}
                     </div>
-                    {/* <p className="text-gray-300 mt-1">
-                            Based on{" "}
-                            <span className="underline cursor-pointer hover:text-yellow-300 transition-colors">
-                                {TOTAL_REVIEWS.toLocaleString()}
-                            </span>{" "}
-                            Customer Reviews
-                        </p> */}
                 </div>
 
                 <div className="max-w-xl mx-auto mb-12 flex justify-center">
@@ -237,7 +253,6 @@ const ReviewPredoctDetails = ({ productId, variantId }) => {
                 setOpenForgotPassword={setOpenForgotPassword}
                 handleClose={handleCloseLogin}
                 handleCloseRegister={handleCloseRegister}
-                // loading={loading}
                 switchToRegister={switchToRegister}
             />
 
@@ -245,7 +260,6 @@ const ReviewPredoctDetails = ({ productId, variantId }) => {
                 open={openRegister}
                 switchToLogin={switchToLogin}
                 handleClose={handleCloseRegister}
-            // loading={loading}
             />
 
             <ForgotPasswordModal

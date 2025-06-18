@@ -19,7 +19,6 @@ import {
   IoMenuOutline,
   IoCloseOutline,
 } from "react-icons/io5";
-import clsx from "clsx";
 import { BsCart3 } from "react-icons/bs";
 import { useTranslations } from "next-intl";
 import { usePathname } from "@/i18n/navigation";
@@ -34,7 +33,7 @@ import { Link } from "@/i18n/navigation";
 import SearchBar from "./SearchBar";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import logo from "@/assets/logo.avif";
+import logo from "../../public/asstes/logo.png";
 import {
   IoHomeOutline,
   IoAppsOutline,
@@ -43,12 +42,12 @@ import {
   IoNewspaperOutline,
   IoCallOutline,
 } from "react-icons/io5";
+import OptimizedImage from "./product-details-page/OptimizedImage";
 
 const Navbar = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const activeLink = pathname.split("/")[2];
   const [openSearch, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -154,13 +153,11 @@ const Navbar = () => {
             >
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Link locale={params.locale} href={`/`}>
-                  <Image
+                  <OptimizedImage
                     src={logo}
                     alt="logo"
                     width={100}
                     height={100}
-                    className="object-cover"
-                    loading="lazy"
                   />
                 </Link>
               </Box>
@@ -180,7 +177,7 @@ const Navbar = () => {
                       item.slug === "/"
                         ? isHome
                         : pathname.split("/").pop() ===
-                          item.slug.split("/").pop();
+                        item.slug.split("/").pop();
                     const textColor = isActive
                       ? "text-red-800"
                       : "text-gray-800";
@@ -287,87 +284,87 @@ const Navbar = () => {
                     cartItems?.branch?.map((branch) =>
                       branch?.item && branch?.item?.length > 0
                         ? branch?.item?.map((item, index) => (
-                            <Box
-                              key={index}
-                              sx={{
+                          <Box
+                            key={index}
+                            sx={{
+                              display: "flex",
+                              gap: 1,
+                              my: 1,
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                            }}
+                          >
+                            <div
+                              style={{
                                 display: "flex",
                                 gap: 1,
-                                my: 1,
-                                justifyContent: "space-between",
                                 alignItems: "center",
                               }}
                             >
-                              <div
-                                style={{
-                                  display: "flex",
-                                  gap: 1,
-                                  alignItems: "center",
-                                }}
-                              >
-                                <Image
-                                  src={item?.image}
-                                  alt={item?.title}
-                                  width={80}
-                                  height={70}
-                                  className="object-cover max-h-[70px] min-w-[80px] mx-3"
-                                />
-                                <Box onClick={handleMouseLeave}>
-                                  <Link
-                                    locale={params.locale}
-                                    className="link-none"
-                                    href={`/products/${item?.title}?product_id=${item?.product_id}&variant_id=${item?.product_variant_id}`}
-                                  >
-                                    <ProductTitle
-                                      sx={{
-                                        fontSize: { xs: "14px", sm: "14px" },
-                                      }}
-                                    >
-                                      {item?.title}
-                                    </ProductTitle>
-                                  </Link>
-                                  <Typography
+                              <Image
+                                src={item?.image}
+                                alt={item?.title}
+                                width={80}
+                                height={70}
+                                className="object-cover max-h-[70px] min-w-[80px] mx-3"
+                              />
+                              <Box onClick={handleMouseLeave}>
+                                <Link
+                                  locale={params.locale}
+                                  className="link-none"
+                                  href={`/products/${item?.title}?product_id=${item?.product_id}&variant_id=${item?.product_variant_id}`}
+                                >
+                                  <ProductTitle
                                     sx={{
-                                      fontSize: "16px",
-                                      fontWeight: "500",
-                                      color: COLORS.textColor,
-                                      display: "flex",
-                                      alignItems: "center",
-                                      gap: "4px",
+                                      fontSize: { xs: "14px", sm: "14px" },
                                     }}
                                   >
-                                    <span dir="ltr">
-                                      {item?.cart_quantity} X{" "}
-                                      {item?.sale_price > 0
-                                        ? item?.sale_price
-                                        : item?.list_price}
-                                    </span>
-                                    <span>
-                                      {selectedCountry?.currency_code}
-                                    </span>
-                                  </Typography>
-                                </Box>
-                              </div>
-                              <IconButton>
-                                <Close
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    deleteCartItem(
-                                      item?.cart_item_id,
-                                      item?.product_variant_id,
-                                    );
-                                  }}
+                                    {item?.title}
+                                  </ProductTitle>
+                                </Link>
+                                <Typography
                                   sx={{
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                    alignItems: "center",
+                                    fontSize: "16px",
+                                    fontWeight: "500",
                                     color: COLORS.textColor,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "4px",
                                   }}
-                                  size={20}
-                                />
-                              </IconButton>
-                            </Box>
-                          ))
+                                >
+                                  <span dir="ltr">
+                                    {item?.cart_quantity} X{" "}
+                                    {item?.sale_price > 0
+                                      ? item?.sale_price
+                                      : item?.list_price}
+                                  </span>
+                                  <span>
+                                    {selectedCountry?.currency_code}
+                                  </span>
+                                </Typography>
+                              </Box>
+                            </div>
+                            <IconButton>
+                              <Close
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
+                                  deleteCartItem(
+                                    item?.cart_item_id,
+                                    item?.product_variant_id,
+                                  );
+                                }}
+                                sx={{
+                                  display: "flex",
+                                  justifyContent: "flex-end",
+                                  alignItems: "center",
+                                  color: COLORS.textColor,
+                                }}
+                                size={20}
+                              />
+                            </IconButton>
+                          </Box>
+                        ))
                         : null,
                     )
                   ) : (
