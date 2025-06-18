@@ -21,8 +21,8 @@ const TOP_RATING_COUNT = 5;
 
 const Modal = ({ isOpen, onClose, title, children }) => {
     return (
-        <Transition.Root show={isOpen} as={Fragment} className="w-full h-full">
-            <Dialog as="div" className="relative z-[999999] w-full h-full" onClose={onClose}>
+        <Transition.Root show={isOpen} as={Fragment}>
+            <Dialog as="div" className="relative z-[999999] " onClose={onClose}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -35,8 +35,8 @@ const Modal = ({ isOpen, onClose, title, children }) => {
                     <div className="fixed inset-0  bg-opacity-30 transition-opacity" />
                 </Transition.Child>
 
-                <div className="fixed inset-0 z-[999999] overflow-y-auto w-full h-full">
-                    <div className="flex min-h-full items-center justify-center p-0 text-center sm:p-0">
+                <div className="fixed inset-0 z-[999999] overflow-y-auto">
+                    <div className="flex  items-center justify-center p-0 text-center sm:p-0">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -46,8 +46,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                           <Dialog.Panel className="relative transform overflow-hidden bg-gray-900 text-left transition-all w-full h-full sm:my-8 sm:w-full sm:max-w-4xl sm:rounded-lg rounded-none">
-
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-none sm:rounded-lg  bg-gray-900 text-left h-[100vh] transition-all sm:my-8 sm:w-full sm:max-w-4xl">
                                 <div className="sticky top-0 z-[9999999] bg-gray-900 px-6 pt-6 pb-4 border-b border-gray-700 flex justify-between items-start">
                                     <Dialog.Title className="sm:text-xl text-[14px] font-semibold text-white">
                                         {title}
