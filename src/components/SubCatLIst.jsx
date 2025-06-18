@@ -40,7 +40,7 @@ const SubCatLIst = ({ subCat }) => {
       </BreadCumContainer>
 
       <Container maxWidth="lg" sx={{ px: 1, overflow: "hidden" }}>
-        {/* <Payment /> */}
+        <Payment />
         <Typography
           variant="body1"
           sx={{
