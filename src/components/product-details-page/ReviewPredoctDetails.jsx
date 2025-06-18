@@ -46,7 +46,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <Dialog.Panel className="relative transform overflow-hidden rounded-none sm:rounded-lg  bg-gray-900 text-left h-[100vh] transition-all sm:my-8 sm:w-full sm:max-w-4xl">
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-none sm:rounded-lg  bg-gray-900 text-left h-[100vh] sm:h-auto transition-all sm:my-8 sm:w-full sm:max-w-4xl">
                                 <div className="sticky top-0 z-[9999999] bg-gray-900 px-6 pt-6 pb-4 border-b border-gray-700 flex justify-between items-start">
                                     <Dialog.Title className="sm:text-xl text-[14px] font-semibold text-white">
                                         {title}
