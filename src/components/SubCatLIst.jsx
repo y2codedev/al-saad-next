@@ -15,7 +15,6 @@ import BreadcrumbsComponent from "@/components/BreadcrumbsComponent";
 import { Link } from "@/i18n/navigation";
 import { useParams, usePathname } from "next/navigation";
 import Image from "next/image";
-import Payment from "./Payment";
 
 const SubCatLIst = ({ subCat }) => {
   const pathname = usePathname();
