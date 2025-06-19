@@ -26,7 +26,6 @@ import { useLanguageStore } from "@/store/useLanguageStore";
 import { supportedLng } from "@/utils/firebase";
 import { supportedCurrency } from "@/constants/appConstant";
 import MobileInstallBanner from "./MobileInstallBanner";
-import { FaUser } from "react-icons/fa";
 const header = () => {
   const router = useRouter();
   const params = useParams();
