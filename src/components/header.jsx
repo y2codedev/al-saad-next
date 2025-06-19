@@ -215,8 +215,7 @@ const header = () => {
                       className="text-gray-500   cursor-pointer hover:text-gray-600 capitalize text-sm"
                       onClick={() => router.push("/my-account")}
                     >
-                      <FaUser className="text-xl" />
-                      {/* <span className="hidden sm:inline">{userInfo?.name}</span> */}
+                      <span className="hidden sm:inline">{userInfo?.name}</span>
                     </div>
                   ) : (
                     <button
