@@ -357,7 +357,7 @@ const Navbar = () => {
                     <div className="block sm:hidden">
                       {userInfo ? (
                         <div
-                          className="text-gray-500 ml-3 mb-1  cursor-pointer hover:text-gray-600 capitalize text-sm"
+                          className="text-gray-500 ml-3  cursor-pointer hover:text-gray-600 capitalize text-sm"
                           onClick={() => router.push("/my-account")}
                         >
                           <FaUser className="text-xl" />
@@ -366,7 +366,7 @@ const Navbar = () => {
                       ) : (
                         <button
                           onClick={handleOpenLogin}
-                          className="text-gray-500 ml-4 mb-1  cursor-pointer hover:text-gray-600 capitalize text-sm"
+                          className="text-gray-500 ml-4   cursor-pointer hover:text-gray-600 capitalize text-sm"
                         >
                           <FaUser className=" text-xl" />
                         </button>
