@@ -212,15 +212,15 @@ const header = () => {
                 <div className="hidden sm:block">
                   {userInfo ? (
                     <div
-                      className="text-gray-500   cursor-pointer hover:text-gray-600 capitalize text-sm"
+                      className=" mr-3 text-black cursor-pointer capitalize text-sm"
                       onClick={() => router.push("/my-account")}
                     >
-                      <span className="hidden sm:inline">{userInfo?.name}</span>
+                      <span className="hidden text-black font-semibold sm:inline">{userInfo?.name}</span>
                     </div>
                   ) : (
                     <button
                       onClick={handleOpenLogin}
-                      className="text-gray-700 font-medium mr-  cursor-pointer hover:text[#bb1f2a] capitalize text-sm"
+                      className="text-gray-700 font-medium mr-3  cursor-pointer hover:text[#bb1f2a] capitalize text-sm"
                     >
                       Login
                     </button>
