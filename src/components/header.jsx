@@ -5,11 +5,9 @@ import {
   Select,
   MenuItem,
   FormControl,
-  Button,
   Box,
   Grid,
   Container,
-  Typography,
 } from "@mui/material";
 import Login from "@/auth/Login/Login.jsx";
 import Register from "@/auth/Register/Register.jsx";
@@ -17,7 +15,6 @@ import { useCountryStore } from "@/store/useCountryStore.js";
 import { useSettingsStore } from "@/store/useSettingsStore.js";
 import useUserStore from "@/store/user.js";
 import ForgotPasswordModal from "@/auth/Login/ForgotPasswordModal.jsx";
-import { PermIdentity } from "@mui/icons-material";
 import useCartStore from "@/store/useCartStore.js";
 import OtpDialog from "@/auth/Login/OtpDialog.jsx";
 import { usePathname } from "@/i18n/navigation";
@@ -29,6 +26,7 @@ import { useLanguageStore } from "@/store/useLanguageStore";
 import { supportedLng } from "@/utils/firebase";
 import { supportedCurrency } from "@/constants/appConstant";
 import MobileInstallBanner from "./MobileInstallBanner";
+import { FaUser } from "react-icons/fa";
 const header = () => {
   const router = useRouter();
   const params = useParams();
