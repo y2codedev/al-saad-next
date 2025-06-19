@@ -211,10 +211,10 @@ const header = () => {
                 <div className="hidden sm:block">
                   {userInfo ? (
                     <div
-                      className=" mr-3 text-black cursor-pointer capitalize text-sm"
+                      className=" mr-3 text-gray-700 cursor-pointer capitalize text-sm"
                       onClick={() => router.push("/my-account")}
                     >
-                      <span className="hidden text-black font-semibold sm:inline">{userInfo?.name}</span>
+                      <span className="hidden text-gray-700 font-semibold sm:inline">{userInfo?.name}</span>
                     </div>
                   ) : (
                     <button
