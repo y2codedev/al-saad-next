@@ -357,7 +357,7 @@ const Navbar = () => {
                     <div className="block sm:hidden">
                       {userInfo ? (
                         <div
-                          className="text-gray-500 px-3  cursor-pointer hover:text-gray-600 capitalize text-sm"
+                          className="text-gray-500 pl-2 pr-1  cursor-pointer hover:text-gray-600 capitalize text-sm"
                           onClick={() => router.push("/my-account")}
                         >
                           <FaUser className="text-xl" />
@@ -366,7 +366,7 @@ const Navbar = () => {
                       ) : (
                         <button
                           onClick={handleOpenLogin}
-                          className="text-gray-500 px-3   cursor-pointer hover:text-gray-600 capitalize text-sm"
+                          className="text-gray-500 pl-2 pr-1 cursor-pointer hover:text-gray-600 capitalize text-sm"
                         >
                           <FaUser className=" text-xl" />
                         </button>
@@ -606,36 +606,36 @@ const Navbar = () => {
           <div className="flex w-full items-center ml-8">
             <MdOutlineLanguage size={25} color="#666" />
 
-           <div className="flex w-full items-center">
-             <LocaleSwitcherSelect
-              defaultValue={locale}
-              label="Change Language"
-            >
-              {routing.locales.map((cur) => (
-                <MenuItem sx={{fontWeight:700,color:"#000"}} key={cur} value={cur}>
-                  {cur?.toUpperCase()}
-                </MenuItem>
-              ))}
-            </LocaleSwitcherSelect>
-
-            <div>
-              <select
-                value={currency?.toLowerCase() || selectedCountry?.currency_code || ""}
-                onChange={handleCountryChange}
-                className="border-none bg-transparent text-sm text-black focus:outline-none focus:ring-0 min-w-[170px]"
+            <div className="flex w-full items-center">
+              <LocaleSwitcherSelect
+                defaultValue={locale}
+                label="Change Language"
               >
-                {countries?.map((country) => (
-                  <option
-                    key={country?.id}
-                    value={country?.currency_code?.toLowerCase()}
-                    className="text-sm text-black hover:bg-red-700 font-medium hover:text-white"
-                  >
-                    {country?.country_name}
-                  </option>
+                {routing.locales.map((cur) => (
+                  <MenuItem sx={{ fontWeight: 700, color: "#000" }} key={cur} value={cur}>
+                    {cur?.toUpperCase()}
+                  </MenuItem>
                 ))}
-              </select>
+              </LocaleSwitcherSelect>
+
+              <div>
+                <select
+                  value={currency?.toLowerCase() || selectedCountry?.currency_code || ""}
+                  onChange={handleCountryChange}
+                  className="border-none bg-transparent text-sm text-black focus:outline-none focus:ring-0 min-w-[170px]"
+                >
+                  {countries?.map((country) => (
+                    <option
+                      key={country?.id}
+                      value={country?.currency_code?.toLowerCase()}
+                      className="text-sm text-black hover:bg-red-700 font-medium hover:text-white"
+                    >
+                      {country?.country_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-           </div>
           </div>
         </Drawer>
       </div>
