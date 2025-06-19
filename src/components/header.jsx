@@ -35,6 +35,8 @@ const header = () => {
   const pathname = usePathname();
   const { currency, locale } = useParams();
   const { selectedCountry, setSelectedCountry } = useSettingsStore();
+  const country = selectedCountry?.currency_code?.toLowerCase() || "aed";
+
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const { countries, fetchCountries } = useCountryStore();
@@ -47,7 +49,6 @@ const header = () => {
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
   const { userInfo } = useUserStore();
-  const country = selectedCountry?.currency_code?.toLowerCase() || "aed";
   const t = useTranslations();
   const switchToRegister = () => {
     handleCloseLogin();
@@ -136,155 +137,132 @@ const header = () => {
   }, [countries, pathname]);
 
   return (
-    <div
-      style={{
-        borderBottom: "1px solid #eee",
-        width: "100%",
-        paddingBottom: "5px",
-      }}
-    >
+    <>
       <MobileInstallBanner />
-      <Container maxWidth="lg" sx={{ padding: 0 }}>
-        <Box sx={{ width: "100%" }}>
-          <Grid
-            container
-            alignItems="center"
-            justifyContent={"space-between"}
-            display={"flex"}
-          >
+      <div className="border-b border-[#eee] w-full pb-[5px] hidden lg:block">
+        <Container maxWidth="lg" sx={{ padding: 0 }}>
+          <Box sx={{ width: "100%" }}>
             <Grid
-              sx={{
-                display: "flex",
-              }}
-              size={9}
+              container
+              alignItems="center"
+              justifyContent={"space-between"}
+              display={"flex"}
             >
-              <LocaleSwitcherSelect
-                defaultValue={locale}
-                label="Change Language"
+              <Grid
+                sx={{
+                  display: "flex",
+                }}
+                size={9}
               >
-                {routing.locales.map((cur) => (
-                  <MenuItem key={cur} value={cur}>
-                    {cur?.toUpperCase()}
-                  </MenuItem>
-                ))}
-              </LocaleSwitcherSelect>
-              <FormControl>
-                <Select
-                  MenuProps={{ disableScrollLock: true }}
-                  value={
-                    currency?.toLowerCase() ||
-                    selectedCountry?.currency_code ||
-                    ""
-                  }
-                  onChange={handleCountryChange}
-                  displayEmpty={false}
-                  sx={{
-                    border: "none",
-                    textOverflow: "inherit",
-                    overflow: "hidden",
-                    minWidth: 170,
-                    ".MuiOutlinedInput-notchedOutline": { border: "none" },
-                    ".MuiSelect-select": {
-                      padding: "0",
-                      color: "#333",
-                      fontSize: 14,
-                    },
-                  }}
+                <LocaleSwitcherSelect
+                  defaultValue={locale}
+                  label="Change Language"
                 >
-                  {countries?.map((country) => (
-                    <MenuItem
-                      key={country?.id}
-                      value={country?.currency_code?.toLowerCase()}
-                      sx={{
-                        fontSize: 14,
-                        ":hover": {
-                          backgroundColor: "#bb1f2a",
-                          color: "#fff",
-                        },
-                      }}
-                    >
-                      {country?.country_name}
+                  {routing.locales.map((cur) => (
+                    <MenuItem key={cur} value={cur}>
+                      {cur?.toUpperCase()}
                     </MenuItem>
                   ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid
-              sx={{
-                display: "contents",
-              }}
-              size={3}
-            >
-              {userInfo && userInfo ? (
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    cursor: "pointer",
-                    ":hover": {
-                      color: "#bb1f2a",
-                      background: "#fff",
-                    },
-                    justifyContent: "flex-end",
-                  }}
-                  onClick={() => router.push("/my-account")}
-                >
-                  <PermIdentity />
-                  <Typography sx={{ display: { xs: "none", sm: "block" } }}>
-                    {userInfo?.name}
-                  </Typography>
-                </Box>
-              ) : (
-                <Button
-                  onClick={handleOpenLogin}
-                  variant="text"
-                  sx={{
-                    color: "#2b2f4c",
-                    textTransform: "capitalize",
-                    fontSize: 14,
-                    ":hover": {
-                      color: "#bb1f2a",
-                      background: "#fff",
-                    },
-                  }}
-                >
-                  {t("login")}
-                </Button>
-              )}
+                </LocaleSwitcherSelect>
+                <FormControl>
+                  <Select
+                    MenuProps={{ disableScrollLock: true }}
+                    value={
+                      currency?.toLowerCase() ||
+                      selectedCountry?.currency_code ||
+                      ""
+                    }
+                    onChange={handleCountryChange}
+                    displayEmpty={false}
+                    sx={{
+                      border: "none",
+                      textOverflow: "inherit",
+                      overflow: "hidden",
+                      minWidth: 170,
+                      ".MuiOutlinedInput-notchedOutline": { border: "none" },
+                      ".MuiSelect-select": {
+                        padding: "0",
+                        color: "#333",
+                        fontSize: 14,
+                      },
+                    }}
+                  >
+                    {countries?.map((country) => (
+                      <MenuItem
+                        key={country?.id}
+                        value={country?.currency_code?.toLowerCase()}
+                        sx={{
+                          fontSize: 14,
+                          ":hover": {
+                            backgroundColor: "#bb1f2a",
+                            color: "#fff",
+                          },
+                        }}
+                      >
+                        {country?.country_name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid
+                sx={{
+                  display: "contents",
+                }}
+                size={3}
+              >
+                <div className="hidden sm:block">
+                  {userInfo ? (
+                    <div
+                      className="text-gray-500   cursor-pointer hover:text-gray-600 capitalize text-sm"
+                      onClick={() => router.push("/my-account")}
+                    >
+                      <FaUser className="text-xl" />
+                      {/* <span className="hidden sm:inline">{userInfo?.name}</span> */}
+                    </div>
+                  ) : (
+                    <button
+                      onClick={handleOpenLogin}
+                      className="text-gray-700 font-medium mr-  cursor-pointer hover:text[#bb1f2a] capitalize text-sm"
+                    >
+                      Login
+                    </button>
+                  )}
+                </div>
 
-              <Login
-                open={openLogin}
-                handleOpenRegister={handleOpenRegister}
-                setOpenMobileOtp={handleOpenLogin}
-                setOpenForgotPassword={setOpenForgotPassword}
-                handleClose={handleCloseLogin}
-                handleCloseRegister={handleCloseRegister}
-                switchToRegister={switchToRegister}
-                setUserData={setUserData}
-              />
-              <Register
-                open={openRegister}
-                switchToLogin={switchToLogin}
-                handleClose={handleCloseRegister}
-              />
-              <ForgotPasswordModal
-                open={openForgotPassword}
-                handleClose={() => setOpenForgotPassword(false)}
-                handleOpenLogin={handleOpenLogin}
-                setOpenMobileOtp={setOpenMobileOtp}
-                setUserData={setUserData}
-              />
-              <OtpDialog
-                isDialogOpen={openMobileOtp}
-                data={userData}
-                handleCloseOtp={() => setOpenMobileOtp(false)}
-              />
+                <Login
+                  open={openLogin}
+                  handleOpenRegister={handleOpenRegister}
+                  setOpenMobileOtp={handleOpenLogin}
+                  setOpenForgotPassword={setOpenForgotPassword}
+                  handleClose={handleCloseLogin}
+                  handleCloseRegister={handleCloseRegister}
+                  switchToRegister={switchToRegister}
+                  setUserData={setUserData}
+                />
+                <Register
+                  open={openRegister}
+                  switchToLogin={switchToLogin}
+                  handleClose={handleCloseRegister}
+                />
+                <ForgotPasswordModal
+                  open={openForgotPassword}
+                  handleClose={() => setOpenForgotPassword(false)}
+                  handleOpenLogin={handleOpenLogin}
+                  setOpenMobileOtp={setOpenMobileOtp}
+                  setUserData={setUserData}
+                />
+                <OtpDialog
+                  isDialogOpen={openMobileOtp}
+                  data={userData}
+                  handleCloseOtp={() => setOpenMobileOtp(false)}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </div>
+          </Box>
+        </Container>
+      </div>
+    </>
   );
 };
 

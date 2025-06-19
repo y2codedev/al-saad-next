@@ -13,6 +13,10 @@ import {
   Button,
   Typography,
   ListItemButton,
+  Grid,
+  MenuItem,
+  FormControl,
+  Select,
 } from "@mui/material";
 import {
   IoSearchOutline,
@@ -43,8 +47,23 @@ import {
   IoCallOutline,
 } from "react-icons/io5";
 import OptimizedImage from "./product-details-page/OptimizedImage";
+import Login from "@/auth/Login/Login";
+import Register from "@/auth/Register/Register";
+import ForgotPasswordModal from "@/auth/Login/ForgotPasswordModal";
+import OtpDialog from "@/auth/Login/OtpDialog";
+import { FaUser } from "react-icons/fa";
+import { routing } from "@/i18n/routing";
+import { useCountryStore } from "@/store/useCountryStore";
+import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
+import { supportedLng } from "@/utils/firebase";
+import { supportedCurrency } from "@/constants/appConstant";
+import { useLanguageStore } from "@/store/useLanguageStore";
+import { MdOutlineLanguage } from "react-icons/md";
 
 const Navbar = () => {
+  const { currency, locale } = useParams();
+  const { selectedCountry, setSelectedCountry } = useSettingsStore();
+  const { countries, fetchCountries } = useCountryStore();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -52,13 +71,35 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { item_count, cartItems, deleteCartItem, getCart } = useCartStore();
-  const { userInfo } = useUserStore();
-  const { selectedCountry } = useSettingsStore();
+
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
   const t = useTranslations();
   const { wishList, getWishList } = useWishListStore();
   const wishListCount = wishList.length;
+
+  // user login info....
+  const { userInfo } = useUserStore();
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [openForgotPassword, setOpenForgotPassword] = useState(false);
+  const [openMobileOtp, setOpenMobileOtp] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const handleOpenLogin = () => setOpenLogin(true);
+  const handleCloseLogin = () => setOpenLogin(false);
+  const handleOpenRegister = () => setOpenRegister(true);
+  const handleCloseRegister = () => setOpenRegister(false);
+
+  const switchToRegister = () => {
+    handleCloseLogin();
+    handleOpenRegister();
+  };
+
+  const switchToLogin = () => {
+    handleCloseRegister();
+    handleOpenLogin();
+  };
+
 
   useEffect(() => {
     getCart();
@@ -128,6 +169,68 @@ const Navbar = () => {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+
+
+
+  const handleCountryChange = (event) => {
+    const selectedCurrencyCode = event.target.value.toLowerCase();
+    if (supportedCurrency.includes(selectedCurrencyCode?.toString())) {
+      const newPath = `/${params?.locale}/${selectedCurrencyCode}`;
+      let selectedCountry = countries.find(
+        (country) =>
+          country?.currency_code?.toLowerCase() === selectedCurrencyCode,
+      );
+      if (selectedCountry) {
+        setSelectedCountry(selectedCountry);
+      }
+      window.location.href = newPath;
+    }
+  };
+
+  useEffect(() => {
+    fetchCountries();
+  }, [fetchCountries]);
+
+  function updateLanguage(languageToUse) {
+    useLanguageStore.getState().setLanguage(languageToUse);
+    document.documentElement.dir = languageToUse === "ar" ? "rtl" : "ltr";
+    document.body.setAttribute("dir", languageToUse === "ar" ? "rtl" : "ltr");
+  }
+
+  function updateCurrency(cur) {
+    if (cur) {
+      let selectedCountry = countries?.find(
+        (country) =>
+          country?.currency_code?.toLowerCase() === cur?.toLowerCase(),
+      );
+      if (selectedCountry) {
+        setSelectedCountry(selectedCountry);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const pathname = window.location.pathname;
+      const pathSegments = pathname.split("/").filter(Boolean);
+      const currentLang = pathSegments[0];
+      const currentCurr = pathSegments[1];
+
+      const languageFromUrl = supportedLng.includes(currentLang)
+        ? currentLang
+        : null;
+      const curFromUrl = supportedCurrency.includes(currentCurr)
+        ? currentCurr
+        : null;
+
+      const languageToUse = languageFromUrl || "en";
+      const currencyToUse = curFromUrl || "aed";
+
+      updateLanguage(languageToUse);
+      updateCurrency(currencyToUse);
+    }
+  }, [countries, pathname]);
+
 
   return (
     <>
@@ -243,6 +346,7 @@ const Navbar = () => {
                         <BsCart3 size={20} color="#292b2c" />
                       </Badge>
                     </IconButton>
+
                     <IconButton
                       edge="end"
                       sx={{ display: { xs: "block", md: "none" }, ml: "3px" }}
@@ -250,6 +354,24 @@ const Navbar = () => {
                     >
                       <IoMenuOutline size={28} color="#292b2c" />
                     </IconButton>
+                    <div className="block sm:hidden">
+                      {userInfo ? (
+                        <div
+                          className="text-gray-500 ml-3 mb-1  cursor-pointer hover:text-gray-600 capitalize text-sm"
+                          onClick={() => router.push("/my-account")}
+                        >
+                          <FaUser className="text-xl" />
+                          {/* <span className="hidden sm:inline">{userInfo?.name}</span> */}
+                        </div>
+                      ) : (
+                        <button
+                          onClick={handleOpenLogin}
+                          className="text-gray-500 ml-4 mb-1  cursor-pointer hover:text-gray-600 capitalize text-sm"
+                        >
+                          <FaUser className=" text-xl" />
+                        </button>
+                      )}
+                    </div>
                   </Box>
                 </Box>
               </Box>
@@ -422,6 +544,13 @@ const Navbar = () => {
             )}
           </Container>
         </AppBar>
+
+        <SearchBar handleClose={handleClose} openSearch={openSearch} />
+      </div>
+
+
+      {/* Mobile Drawer start here to  */}
+      <div className="block sm:hidden">
         <Drawer
           open={open}
           onClose={toggleDrawer(false)}
@@ -473,10 +602,73 @@ const Navbar = () => {
               );
             })}
           </Box>
-        </Drawer>
 
-        <SearchBar handleClose={handleClose} openSearch={openSearch} />
+          <div className="flex w-full items-center ml-8">
+            <MdOutlineLanguage size={25} color="#666" />
+
+           <div className="flex w-full items-center">
+             <LocaleSwitcherSelect
+              defaultValue={locale}
+              label="Change Language"
+            >
+              {routing.locales.map((cur) => (
+                <MenuItem sx={{fontWeight:700,color:"#000"}} key={cur} value={cur}>
+                  {cur?.toUpperCase()}
+                </MenuItem>
+              ))}
+            </LocaleSwitcherSelect>
+
+            <div>
+              <select
+                value={currency?.toLowerCase() || selectedCountry?.currency_code || ""}
+                onChange={handleCountryChange}
+                className="border-none bg-transparent text-sm text-black focus:outline-none focus:ring-0 min-w-[170px]"
+              >
+                {countries?.map((country) => (
+                  <option
+                    key={country?.id}
+                    value={country?.currency_code?.toLowerCase()}
+                    className="text-sm text-black hover:bg-red-700 font-medium hover:text-white"
+                  >
+                    {country?.country_name}
+                  </option>
+                ))}
+              </select>
+            </div>
+           </div>
+          </div>
+        </Drawer>
       </div>
+      {/* Mobile Drawer end here  */}
+
+
+      <Login
+        open={openLogin}
+        handleOpenRegister={handleOpenRegister}
+        setOpenMobileOtp={handleOpenLogin}
+        setOpenForgotPassword={setOpenForgotPassword}
+        handleClose={handleCloseLogin}
+        handleCloseRegister={handleCloseRegister}
+        switchToRegister={switchToRegister}
+        setUserData={setUserData}
+      />
+      <Register
+        open={openRegister}
+        switchToLogin={switchToLogin}
+        handleClose={handleCloseRegister}
+      />
+      <ForgotPasswordModal
+        open={openForgotPassword}
+        handleClose={() => setOpenForgotPassword(false)}
+        handleOpenLogin={handleOpenLogin}
+        setOpenMobileOtp={setOpenMobileOtp}
+        setUserData={setUserData}
+      />
+      <OtpDialog
+        isDialogOpen={openMobileOtp}
+        data={userData}
+        handleCloseOtp={() => setOpenMobileOtp(false)}
+      />
     </>
   );
 };
